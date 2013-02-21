@@ -1,0 +1,34 @@
+NAME="texinfo"
+VERSION=4.13
+RELEASE=1
+CATEGORY="Doc"
+SUMMARY="GNU documentation formatter and viewer"
+DESCRIPTION="Texinfo is the official documentation format of the GNU project.
+It uses a single source file to produce output in a number of formats, both
+online and printed. This means that instead of writing different documents for
+online information and another for a printed manual, you need write only one
+document. The Texinfo system is well-integrated with GNU Emacs."
+HOMEPAGE="http://www.gnu.org/software/texinfo/"
+SRC_URI="mirror://gnu/texinfo/texinfo-${VERSION}a.tar.lzma"
+SRC_DIR="texinfo-${VERSION}"
+
+src_compile() {
+	cd ${S}
+	cygautoreconf
+	cd ${B}
+	cygconf gl_cv_func_wcwidth_works=yes
+	if cross_compiling
+	then
+		manifestize tools/install-info/ginstall-info.exe
+	else
+		manifestize install-info/ginstall-info.exe
+	fi
+	cygmake
+}
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	rm -f ${D}/usr/lib/charset.alias
+}
