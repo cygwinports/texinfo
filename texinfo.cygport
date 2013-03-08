@@ -11,6 +11,9 @@ document. The Texinfo system is well-integrated with GNU Emacs."
 HOMEPAGE="http://www.gnu.org/software/texinfo/"
 SRC_URI="mirror://gnu/texinfo/texinfo-${VERSION}a.tar.lzma"
 SRC_DIR="texinfo-${VERSION}"
+PATCH_URI="4.13-cross-compile.patch"
+
+DIFF_EXCLUDES="config.in"
 
 src_compile() {
 	cd ${S}

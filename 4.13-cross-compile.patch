@@ -1,0 +1,11 @@
+--- origsrc/texinfo-4.13/Makefile.am	2008-07-05 18:32:19.000000000 -0500
++++ src/texinfo-4.13/Makefile.am	2013-03-08 12:16:51.158174500 -0600
+@@ -24,7 +24,7 @@ TEXINFO_TEX = doc/texinfo.tex
+ 
+ if TOOLS_ONLY
+   # Build native tools only.
+-  SUBDIRS = lib info install-info makeinfo util
++  SUBDIRS = gnulib/lib lib info install-info makeinfo util
+ else
+   # All subdirectories.
+   # Do libs first since the C programs depend on it.
